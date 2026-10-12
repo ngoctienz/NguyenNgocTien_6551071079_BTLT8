@@ -1,0 +1,14 @@
+## Build and compile
+**/[Bb]in/
+**/[Oo]bj/
+
+## Visual Studio & IDEs
+**/.vs/
+**/.idea/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Temp & Log
+*.log
