@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="10/12/2026 12:15:00" ReportInfo.Modified="10/12/2026 12:15:00" ReportInfo.CreatorVersion="2026.2.8.0">
+  <Dictionary>
+    <BusinessObjectSource Name="ChiTiet" ReferenceName="ChiTiet" DataType="System.Int32" Enabled="true">
+      <Column Name="STT" DataType="System.Int32"/>
+      <Column Name="TenMon" DataType="System.String"/>
+      <Column Name="SoLuong" DataType="System.Int32"/>
+      <Column Name="DonGia" DataType="System.Decimal"/>
+      <Column Name="ThanhTien" DataType="System.Decimal"/>
+    </BusinessObjectSource>
+    <Parameter Name="TenQuan" DataType="System.String" AsString="QUÁN CÀ PHÊ GÓC PHỐ"/>
+    <Parameter Name="SoHD" DataType="System.String" AsString="HD000001"/>
+    <Parameter Name="NgayLap" DataType="System.String" AsString="09/10/2026 08:15"/>
+    <Parameter Name="SoBan" DataType="System.String" AsString="3"/>
+    <Parameter Name="HinhThucTT" DataType="System.String" AsString="Tiền mặt"/>
+    <Total Name="TongCong" Expression="[ChiTiet.ThanhTien]" Evaluator="Data1"/>
+  </Dictionary>
+  <ReportPage Name="Page1" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Top="20" Width="718.2" Height="140">
+      <TextObject Name="txtTenQuan" Left="135" Top="10" Width="450" Height="25" Text="[TenQuan]" HorzAlign="Center" VertAlign="Center" Font="Arial, 11pt, style=Bold"/>
+      <TextObject Name="txtTieuDe" Left="135" Top="40" Width="450" Height="30" Text="HÓA ĐƠN THANH TOÁN" HorzAlign="Center" VertAlign="Center" Font="Arial, 15pt, style=Bold"/>
+      <TextObject Name="txtSoHD" Left="135" Top="78" Width="200" Height="20" Text="Số HĐ: [SoHD]" VertAlign="Center" Font="Arial, 9.5pt"/>
+      <TextObject Name="txtNgayLap" Left="380" Top="78" Width="205" Height="20" Text="Ngày: [NgayLap]" HorzAlign="Right" VertAlign="Center" Font="Arial, 9.5pt"/>
+      <TextObject Name="txtSoBan" Left="135" Top="100" Width="200" Height="20" Text="Bàn: [SoBan]" VertAlign="Center" Font="Arial, 9.5pt"/>
+      <TextObject Name="txtHinhThucTT" Left="380" Top="100" Width="205" Height="20" Text="Hình thức: [HinhThucTT]" HorzAlign="Right" VertAlign="Center" Font="Arial, 9.5pt"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="165" Width="718.2" Height="25">
+      <TextObject Name="hdrSTT" Left="135" Top="0" Width="40" Height="25" Border.Lines="All" Fill.Color="235, 235, 235" Text="STT" HorzAlign="Center" VertAlign="Center" Font="Arial, 9.5pt, style=Bold"/>
+      <TextObject Name="hdrTenMon" Left="175" Top="0" Width="170" Height="25" Border.Lines="All" Fill.Color="235, 235, 235" Text="Tên món" HorzAlign="Center" VertAlign="Center" Font="Arial, 9.5pt, style=Bold"/>
+      <TextObject Name="hdrSoLuong" Left="345" Top="0" Width="45" Height="25" Border.Lines="All" Fill.Color="235, 235, 235" Text="SL" HorzAlign="Center" VertAlign="Center" Font="Arial, 9.5pt, style=Bold"/>
+      <TextObject Name="hdrDonGia" Left="390" Top="0" Width="95" Height="25" Border.Lines="All" Fill.Color="235, 235, 235" Text="Đơn giá" HorzAlign="Center" VertAlign="Center" Font="Arial, 9.5pt, style=Bold"/>
+      <TextObject Name="hdrThanhTien" Left="485" Top="0" Width="100" Height="25" Border.Lines="All" Fill.Color="235, 235, 235" Text="Thành tiền" HorzAlign="Center" VertAlign="Center" Font="Arial, 9.5pt, style=Bold"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="195" Width="718.2" Height="24" DataSource="ChiTiet">
+      <TextObject Name="txtDataSTT" Left="135" Top="0" Width="40" Height="24" Border.Lines="All" Text="[ChiTiet.STT]" HorzAlign="Center" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="txtDataTenMon" Left="175" Top="0" Width="170" Height="24" Border.Lines="All" Text="[ChiTiet.TenMon]" Padding="4, 0, 4, 0" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="txtDataSoLuong" Left="345" Top="0" Width="45" Height="24" Border.Lines="All" Text="[ChiTiet.SoLuong]" HorzAlign="Center" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="txtDataDonGia" Left="390" Top="0" Width="95" Height="24" Border.Lines="All" Text="[ChiTiet.DonGia]" Padding="0, 0, 4, 0" HorzAlign="Right" VertAlign="Center" Font="Arial, 9pt">
+        <Formats>
+          <NumberFormat DecimalDigits="0" UseGroupSeparator="true" GroupSeparator="."/>
+        </Formats>
+      </TextObject>
+      <TextObject Name="txtDataThanhTien" Left="485" Top="0" Width="100" Height="24" Border.Lines="All" Text="[ChiTiet.ThanhTien]" Padding="0, 0, 4, 0" HorzAlign="Right" VertAlign="Center" Font="Arial, 9pt">
+        <Formats>
+          <NumberFormat DecimalDigits="0" UseGroupSeparator="true" GroupSeparator="."/>
+        </Formats>
+      </TextObject>
+    </DataBand>
+    <ReportSummaryBand Name="ReportSummary1" Top="225" Width="718.2" Height="70">
+      <TextObject Name="lblTongCong" Left="345" Top="5" Width="140" Height="22" Text="Tổng cộng:" HorzAlign="Right" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="txtTongCong" Left="485" Top="5" Width="100" Height="22" Text="[TongCong]" Padding="0, 0, 4, 0" HorzAlign="Right" VertAlign="Center" Font="Arial, 10pt, style=Bold">
+        <Formats>
+          <NumberFormat DecimalDigits="0" UseGroupSeparator="true" GroupSeparator="."/>
+        </Formats>
+      </TextObject>
+      <TextObject Name="txtCamOn" Left="135" Top="38" Width="450" Height="22" Text="Cảm ơn quý khách. Hẹn gặp lại!" HorzAlign="Center" VertAlign="Center" Font="Arial, 9.5pt"/>
+    </ReportSummaryBand>
+    <PageFooterBand Name="PageFooter1" Top="300" Width="718.2" Height="30">
+      <TextObject Name="txtTrang" Left="135" Top="5" Width="450" Height="20" Text="Trang [Page#]/[TotalPages#]" HorzAlign="Center" VertAlign="Center" Font="Arial, 9pt"/>
+    </PageFooterBand>
+  </ReportPage>
+</Report>

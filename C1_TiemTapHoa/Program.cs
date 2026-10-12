@@ -1,3 +1,5 @@
+using System.Globalization;
+
 namespace C1_TiemTapHoa
 {
     internal static class Program
@@ -8,6 +10,10 @@ namespace C1_TiemTapHoa
         [STAThread]
         static void Main()
         {
+            var culture = new CultureInfo("vi-VN");
+            CultureInfo.DefaultThreadCurrentCulture = culture;
+            CultureInfo.DefaultThreadCurrentUICulture = culture;
+
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();

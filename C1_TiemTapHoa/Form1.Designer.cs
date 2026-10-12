@@ -142,6 +142,7 @@ namespace C1_TiemTapHoa
             nudGiaBan.Size = new Size(180, 27);
             nudGiaBan.TabIndex = 5;
             nudGiaBan.ThousandsSeparator = true;
+            nudGiaBan.Increment = new decimal(new int[] { 500, 0, 0, 0 });
             // 
             // txtTenHang
             // 

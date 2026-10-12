@@ -1,0 +1,66 @@
+IF NOT EXISTS (SELECT name FROM sys.databases WHERE name = N'QuanCaPhe')
+BEGIN
+    CREATE DATABASE QuanCaPhe;
+END
+GO
+
+USE QuanCaPhe;
+GO
+
+IF OBJECT_ID(N'dbo.ChiTietHoaDon', N'U') IS NOT NULL DROP TABLE dbo.ChiTietHoaDon;
+IF OBJECT_ID(N'dbo.HoaDon', N'U') IS NOT NULL DROP TABLE dbo.HoaDon;
+IF OBJECT_ID(N'dbo.Mon', N'U') IS NOT NULL DROP TABLE dbo.Mon;
+GO
+
+CREATE TABLE Mon (
+    MaMon INT IDENTITY(1,1) PRIMARY KEY,
+    TenMon NVARCHAR(100) NOT NULL,
+    NhomMon NVARCHAR(30) NOT NULL,
+    DonGia DECIMAL(18,0) NOT NULL
+);
+GO
+
+CREATE TABLE HoaDon (
+    MaHD INT IDENTITY(1,1) PRIMARY KEY,
+    NgayLap DATETIME NOT NULL,
+    SoBan INT NOT NULL,
+    HinhThucTT NVARCHAR(20) NOT NULL,
+    GhiChu NVARCHAR(200) NULL
+);
+GO
+
+CREATE TABLE ChiTietHoaDon (
+    MaCT INT IDENTITY(1,1) PRIMARY KEY,
+    MaHD INT NOT NULL CONSTRAINT FK_ChiTietHoaDon_HoaDon FOREIGN KEY REFERENCES HoaDon(MaHD) ON DELETE CASCADE,
+    MaMon INT NOT NULL CONSTRAINT FK_ChiTietHoaDon_Mon FOREIGN KEY REFERENCES Mon(MaMon),
+    SoLuong INT NOT NULL,
+    DonGia DECIMAL(18,0) NOT NULL
+);
+GO
+
+SET IDENTITY_INSERT Mon ON;
+INSERT INTO Mon (MaMon, TenMon, NhomMon, DonGia) VALUES
+(1, N'Cà phê sữa đá', N'Cà phê', 29000),
+(2, N'Bạc xỉu', N'Cà phê', 32000),
+(3, N'Trà đào cam sả', N'Trà', 45000),
+(4, N'Bánh tiramisu', N'Bánh', 39000),
+(5, N'Nước suối', N'Nước đóng chai', 12000);
+SET IDENTITY_INSERT Mon OFF;
+GO
+
+SET IDENTITY_INSERT HoaDon ON;
+INSERT INTO HoaDon (MaHD, NgayLap, SoBan, HinhThucTT, GhiChu) VALUES
+(1, '2026-10-09 08:15:00', 3, N'Tiền mặt', NULL),
+(2, '2026-10-09 09:40:00', 5, N'Chuyển khoản', NULL);
+SET IDENTITY_INSERT HoaDon OFF;
+GO
+
+SET IDENTITY_INSERT ChiTietHoaDon ON;
+INSERT INTO ChiTietHoaDon (MaCT, MaHD, MaMon, SoLuong, DonGia) VALUES
+(1, 1, 1, 2, 29000),
+(2, 1, 3, 1, 45000),
+(3, 1, 4, 1, 39000),
+(4, 2, 2, 1, 32000),
+(5, 2, 5, 2, 12000);
+SET IDENTITY_INSERT ChiTietHoaDon OFF;
+GO
